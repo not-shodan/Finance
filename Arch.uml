@@ -27,3 +27,22 @@
 # Grade_Cambio
 
 # Formulas (var, treynor, diversificação, etc)
+
+
+## Funções
+
+- retornaClientes
+- retornaCarteiras
+- atualizaPosicaoDiaria
+- 
+
+
+## Funcoes Simulação
+
+- simulaCambio
+- simulaJuros
+- simulaRisco
+- simulaPerformance
+
+
+- simulaRetornoLiquido
