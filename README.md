@@ -1,12 +1,12 @@
 
-## Portifolio global
+## Portfolio global
 - posição em ações
 - posição em RF
 - posição em ETF
 - Controle movimentações, variações diárias
 
 
-## Portifolio local
+## Portfolio local
 - posição em ações
 - posição em RF
 - posição em ETF
