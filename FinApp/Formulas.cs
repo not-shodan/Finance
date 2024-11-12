@@ -1,3 +1,8 @@
+/** Using NuGet Package Manager Console
+    Install-Package YahooFinanceApi 
+**/
+
+
 using System;
 using System.Threading.Tasks;
 using YahooFinanceApi;
