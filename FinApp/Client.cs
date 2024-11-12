@@ -7,15 +7,19 @@ public class Client
     public int NoClient { get; set; }
     public string NameClient { get; set; }
     public int NoPortfolios { get; set; }
+    public double GlobalPortfolio { get; set; }
+    public double LocalPortfolio { get; set; } 
     public double TotalPosition { get; set; }
     public int RiskScore { get; set; }
 
     // Constructor to initialize the attributes
-    public Client(int noClient, string nameClient, int noPortfolios, double totalPosition, int riskScore)
+    public Client(int noClient, string nameClient, int noPortfolios, double globalPortfolio, double localPortfolio, double totalPosition, int riskScore)
     {
         NoClient = noClient;
         NameClient = nameClient;
         NoPortfolios = noPortfolios;
+        GlobalPortfolio = globalPortfolio;
+        LocalPortfolio = localPortfolio;
         TotalPosition = totalPosition;
         RiskScore = riskScore;
     }
@@ -26,6 +30,8 @@ public class Client
         Console.WriteLine("Client No: " + NoClient.ToString("D3"));
         Console.WriteLine("Name: " + NameClient);
         Console.WriteLine("Number of Portfolios: " + NoPortfolios);
+        Console.WriteLine("Pos. Global Portfolio: " + GlobalPortfolio.ToString("C"));
+        Console.WriteLine("Pos. Local Portfolio: " + LocalPortfolio.ToString("C"));
         Console.WriteLine("Total Position: " + TotalPosition.ToString("C"));
         Console.WriteLine("Risk Score: " + RiskScore);
         Console.WriteLine();  // Add an empty line for separation between clients
@@ -40,10 +46,7 @@ class Program
         List<Client> clients = new List<Client>();
 
         // Adding 4 clients (one is the original client and 3 new clients)
-        clients.Add(new Client(1, "Jack", 2, 120500.00, 4));
-        clients.Add(new Client(2, "Alice", 3, 250000.00, 5));
-        clients.Add(new Client(3, "Bob", 1, 75000.00, 3));
-        clients.Add(new Client(4, "Eve", 4, 500000.00, 2));
+        clients.Add(new Client(1, "Jack", 2, 500.00, 100000.00, 100500.00, 4));
 
         // Display the details of all clients in the list
         foreach (var client in clients)
@@ -52,4 +55,3 @@ class Program
         }
     }
 }
-
