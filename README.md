@@ -3,6 +3,8 @@
 - returnPrice (return stock quote and last close/price)
 - returnFedDecisions()
 - returnDXY
+- returnDOLBRL(B3)
+- returnBrazilianIR(BC)
 - balance sheet analytics
 - hedging strategies
 - interest rate pricing & risk management
