@@ -1,13 +1,13 @@
 > Desenho do fluxo de processos e classes
 
 
-# Pessoa
+* Pessoa
 - nome
 - n_carteira (local e/ou global)
 - perfil_invest
 
 
-# Carteira
+* Carteira
 - n_cliente
 - n_carteira
 - saldo
@@ -16,33 +16,30 @@
 - outros (coluna)
 
 
-# Grade_Juros_Local
+* Grade_Juros_Local
 
-# Grade_Juros_Global
+* Grade_Juros_Global
 
-# Grade_Ativos_Local
+* Grade_Ativos_Local
 
-# Grade_Ativos_Global
+* Grade_Ativos_Global
 
-# Grade_Cambio
+* Grade_Cambio
 
-# Formulas (var, treynor, diversificação, etc)
+* Formulas (var, treynor, diversificação, etc)
 
 
-## Funções
+* Funções #2
 
 - retornaClientes
 - retornaCarteiras
-- atualizaPosicaoDiaria
-- 
+- atualizaPosicaoDiaria 
 
-
-## Funcoes Simulação
+* Funcoes Simulação
 
 - simulaCambio
 - simulaJuros
 - simulaRisco
 - simulaPerformance
-
 
 - simulaRetornoLiquido
