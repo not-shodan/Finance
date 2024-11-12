@@ -66,6 +66,6 @@ class Program
     static void Main()
     {
         Client client = new Client(1, "Jack", 2, 120500.00, 4);
-        Client.DisplayClientDetails();
+        client.DisplayClientDetails();
     }
 }
