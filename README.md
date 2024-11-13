@@ -1,7 +1,8 @@
 
 
 ## Table of Contents
-<in progress>
+in progress
+
 
 ## How does this code work?
 -- Will be available on the through web interface
