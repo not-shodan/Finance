@@ -27,5 +27,3 @@
 - funding optimization
 - liquidity risk management
 - cash & collateral management
-
-https://www.kaplancollectionagency.com/financial-statement-analysis/balance-sheet-analysis/
