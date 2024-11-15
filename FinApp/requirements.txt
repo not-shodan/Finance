@@ -1,0 +1,80 @@
+Create the following classes
+
+Client
+Portfolio
+Stocks
+Grid
+Reports
+
+Class Client
+
+Atributes:
+- AccountNumber integer
+- ClientName = string
+
+Functions:
+- CreateClient
+- ListClients
+- DeleteClient
+- CountPortfolios
+
+Class Portfolio
+
+Atributes:
+- PortfolioNumber: integer
+- AccountNumber: (reference to AccountNumber at Client)
+- Stocks: list of stocks inside portfolio and related to portfolio number)
+- PortfolioType: string (Global or Local)
+- PortfolioTotal: return the sum (quantity of stocks multiplied by last price) of all stocks in the portfolio
+
+Functions:
+- CreatePortfolio (unique Id/portfolio number)
+- InsertStock (on Current Portfolio)
+- RemoveStock (from Current Portfolio)
+- ListPortfolio (informe account number and return Portfolio details, each stock and PortfolioTotal)
+
+Class Stocks
+Atributes:
+- StockName = string
+- StockPrice = double
+
+Functions:
+- CreateStock
+- DeleteStock
+- ListStocks
+
+create class 'Grid' and 'Reports' empty
+
+in the Main class, create a menu print and receive user input
+
+Menu:
+- 1 Clients
+- 2 Portfolios
+- 3 Stocks
+
+Inside menu 1 Clients, display menu
+- 1 Create Client
+- 2 List Clients
+- 3 Delete Client
+- 4 Main menu
+
+Inside menu 2 Portfolios, display menu
+- 1 CreatePortfolio
+- 2 ListPortfolios
+- 3 InsertStockPortfolio
+- 4 RemoveStockPortfolio
+
+Inside menu 3 Stocks, display menu
+- List Stocks 
+- CreateStock
+- DeleteStock
+
+
+
+
+
+
+
+
+
+
