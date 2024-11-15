@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+
 
 namespace FinanceApp
 {
@@ -25,24 +27,7 @@ namespace FinanceApp
             Portfolios = new List<Portfolio>();
         }
     }
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-using System.Collections.Generic;
-
-namespace FinanceApp
-{
     public class Portfolio
     {
         public int PortfolioNumber { get; set; }
@@ -62,23 +47,9 @@ namespace FinanceApp
         public int Quantity { get; set; }
         public double LastPrice { get; set; }
     }
-}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-namespace FinanceApp
-{
     public class Grid
     {
         public string StockName { get; set; }
@@ -87,17 +58,7 @@ namespace FinanceApp
         public double LastSixMonths { get; set; } // Percentage
         public double LastTwelveMonths { get; set; } // Percentage
     }
-}
 
-
-
-
-
-
-
-
-namespace FinanceApp
-{
     public class Simulations
     {
         public double CalculateRisk(Portfolio portfolio)
@@ -106,17 +67,9 @@ namespace FinanceApp
             return 0.0; // Example return value
         }
     }
-}
 
 
 
-
-
-
-
-
-namespace FinanceApp
-{
     public class Reports
     {
         public double ReturnPerformance(Portfolio portfolio)
@@ -125,21 +78,7 @@ namespace FinanceApp
             return 0.0; // Example return value
         }
     }
-}
 
-
-
-
-
-
-
-
-
-
-using System;
-
-namespace FinanceApp
-{
     class Program
     {
         static void Main(string[] args)
@@ -202,44 +141,4 @@ namespace FinanceApp
         }
     }
 }
-
-
-
-
-
-
-
-
-Explanation:
-
-1. Client Class:
-
-Added Portfolios as a list to store all portfolios associated with the client.
-
-Added NumberPortfolios property to return the number of portfolios.
-
-Added HasBothPortfolioTypes method to check if the client has both "Local" and "Global" portfolios.
-
-
-
-2. Portfolio Class:
-
-Modified Stocks to use a dictionary of Stock objects.
-
-Created a Stock class to hold stock attributes like name, quantity, and last price.
-
-
-
-3. Main Program:
-
-Initializes a client named "Jack" with a local portfolio containing TSLA stock.
-
-Demonstrates stock details, calculates the total stock value, and prints portfolio details.
-
-Displays grid performance for TSLA stock.
-
-
-
-
-This structure is extensible and follows object-oriented design principles.
 
