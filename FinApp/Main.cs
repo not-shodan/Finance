@@ -116,12 +116,15 @@ namespace FinanceApp
             // Print client details
             Console.WriteLine($"Client Name: {client.ClientName}");
             Console.WriteLine($"Total Position: USD {client.TotalPosition:N2}");
-            Console.WriteLine($"Number of Portfolios: {client.CountPortfolios()}");
+            Console.WriteLine($"Number of Portfolios: {client.CountPortfolios()} \n");
 
             // Calculate and print TSLA stock total
             double totalStockValue = tslaStock.Quantity * tslaStock.LastPrice;
-            Console.WriteLine($"Stock: {tslaStock.StockName}, Quantity: {tslaStock.Quantity}, Last Price: USD {tslaStock.LastPrice:N2}");
-            Console.WriteLine($"Total Stock Value: USD {totalStockValue:N2}");
+			
+            Console.WriteLine($"Stock: {tslaStock.StockName}");
+			Console.WriteLine($"Quantity: {tslaStock.Quantity}");
+			Console.WriteLine($"Last Price: USD {tslaStock.LastPrice:N2}");
+            Console.WriteLine($"Total in {tslaStock.StockName} Stock Value: USD {totalStockValue:N2} \n");
 
             // Grid Example
             Grid stockGrid = new Grid
@@ -141,4 +144,3 @@ namespace FinanceApp
         }
     }
 }
-
