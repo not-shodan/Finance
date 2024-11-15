@@ -4,6 +4,4 @@
 
 For example, you can list Investments, run risk simulations (MonteCarlo, VaR, Correlation etc):
 
-```typescript
 
-```
