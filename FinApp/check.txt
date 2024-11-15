@@ -6,55 +6,59 @@ class Client
     public int AccountNumber { get; set; }
     public string ClientName { get; set; }
 
-	public static List<Client> Clients = new List<Client>();
+    public static List<Client> Clients = new List<Client>();
 
-	
-	public static void CreateClient()
-	{
-		int accountNumber = Clients.Count + 1;
-		Console.WriteLine("\nInsert name: ");
-		string name = Console.ReadLine();
-		Clients.Add(new Client { AccountNumber = accountNumber, ClientName = name });
-	}
- }
-
-class Stock()
-{
-	public int StockNumber { get; set; }
-	public string StockName { get; set; }
-	public double StockPrice { get; set; }
-	
-	public static List<Stock> Stocks = new List<Stock>();
-	
-	public static void CreateStock()
-	{
-		int stockNumber = 0;
-		string name = "";
-		double price = 0.0;
-		Stocks.Add(new Stock { StockNumber = stockNumber, StockName = name, StockPrice = price });
-		
-		1, TSLA, 20.00
-		2, NVDA, 14.00
-		3, AMZN, 7.00
-		4, AAPL, 12.00
-		5, MSFT, 24.00
-		6, GOOGL, 30.00
-
-	}
+    public static void CreateClient()
+    {
+        int accountNumber = Clients.Count + 1;
+        Console.WriteLine("\nInsert name: ");
+        string name = Console.ReadLine();
+        Clients.Add(new Client { AccountNumber = accountNumber, ClientName = name });
+    }
 }
 
+class Stock
+{
+    public int StockNumber { get; set; }
+    public string StockName { get; set; }
+    public double StockPrice { get; set; }
+
+    public static List<Stock> Stocks = new List<Stock>();
+
+    public static void InitializeStocks()
+    {
+        Stocks.Add(new Stock { StockNumber = 1, StockName = "TSLA", StockPrice = 20.00 });
+        Stocks.Add(new Stock { StockNumber = 2, StockName = "NVDA", StockPrice = 14.00 });
+        Stocks.Add(new Stock { StockNumber = 3, StockName = "AMZN", StockPrice = 7.00 });
+        Stocks.Add(new Stock { StockNumber = 4, StockName = "AAPL", StockPrice = 12.00 });
+        Stocks.Add(new Stock { StockNumber = 5, StockName = "MSFT", StockPrice = 24.00 });
+        Stocks.Add(new Stock { StockNumber = 6, StockName = "GOOGL", StockPrice = 30.00 });
+    }
+
+    public static void DisplayStocks()
+    {
+        Console.WriteLine("\nAvailable Stocks:");
+        foreach (var stock in Stocks)
+        {
+            Console.WriteLine($"Stock Number: {stock.StockNumber}, Name: {stock.StockName}, Price: {stock.StockPrice:C}");
+        }
+    }
+}
 
 class Program
 {
     static void Main()
     {
-		Client.CreateClient();
-		foreach (var client in Client.Clients)
-		{
-			Console.WriteLine($"Account number: {client.AccountNumber}");
-			Console.WriteLine($"Name: {client.ClientName}");
-		}
-		
-		Stock.CreateStock();
-	}
+        // Create a client
+        Client.CreateClient();
+        foreach (var client in Client.Clients)
+        {
+            Console.WriteLine($"Account Number: {client.AccountNumber}");
+            Console.WriteLine($"Name: {client.ClientName}");
+        }
+
+        // Initialize and display stocks
+        Stock.InitializeStocks();
+        Stock.DisplayStocks();
+    }
 }
