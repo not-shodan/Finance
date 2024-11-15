@@ -1,16 +1,53 @@
-class Stock()
+using System;
+using System.Collections.Generic;
+
+class Stock
 {
-	public int StockNumber { get; set; }
-	public string StockName { get; set; }
-	public double StockPrice { get; set; }
-	
-	public static List<Stock> Stocks = new List<Stock>();
-	
-	public static void CreateStock()
-	{
-		int stockNumber = Stocks.Count + 1;
-		string name = "";
-		double price = 0.0;
-		Stocks.Add(new Stock { StockNumber = stockNumber, StockName = name, StockPrice = price });
-	}
+    public int StockNumber { get; set; }
+    public string StockName { get; set; }
+    public double StockPrice { get; set; }
+
+    public static List<Stock> Stocks = new List<Stock>();
+
+    public static void CreateStock()
+    {
+        int stockNumber = Stocks.Count + 1;
+
+        Console.WriteLine("\nEnter Stock Name: ");
+        string name = Console.ReadLine();
+
+        Console.WriteLine("Enter Stock Price: ");
+        double price;
+        while (!double.TryParse(Console.ReadLine(), out price) || price < 0)
+        {
+            Console.WriteLine("Invalid input. Please enter a valid positive number for Stock Price: ");
+        }
+
+        Stocks.Add(new Stock { StockNumber = stockNumber, StockName = name, StockPrice = price });
+        Console.WriteLine($"Stock {name} successfully added!");
+    }
+
+    public static void DisplayStocks()
+    {
+        Console.WriteLine("\nList of Stocks:");
+        foreach (var stock in Stocks)
+        {
+            Console.WriteLine($"Stock Number: {stock.StockNumber}, Name: {stock.StockName}, Price: {stock.StockPrice:C}");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Insert 5 stocks:");
+
+        for (int i = 0; i < 5; i++)
+        {
+            Stock.CreateStock();
+        }
+
+        Stock.DisplayStocks();
+    }
 }
