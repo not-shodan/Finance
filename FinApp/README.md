@@ -1,7 +1,7 @@
+[![npm version](https://badge.fury.io/js/quicktype.svg)](https://badge.fury.io/js/quicktype)
+![Build status](https://github.com/quicktype/quicktype/actions/workflows/master.yaml/badge.svg)
 
-[![Python version](https://badge.fury.io/py/pulumi.svg)](https://pypi.org/project/pulumi)
-
-**Pulumi's Infrastructure as Code SDK** is the easiest way to build and deploy infrastructure, of any architecture and on any cloud, using programming languages that you already know and love. Code and ship infrastructure faster with your favorite languages and tools, and embed IaC anywhere with [Automation API](https://www.pulumi.com/docs/guides/automation-api/?utm_source=github.com&utm_medium=referral&utm_campaign=pulumi-pulumi-github-repo&utm_content=automation+api).
+**FinApp** is the easiest way to build and deploy infrastructure, of any architecture and on any cloud, using programming languages that you already know and love. Code and ship infrastructure faster with your favorite languages and tools, and embed IaC anywhere with [Automation API](https://www.pulumi.com/docs/guides/automation-api/?utm_source=github.com&utm_medium=referral&utm_campaign=pulumi-pulumi-github-repo&utm_content=automation+api).
 
 Simply write code in your favorite language and Pulumi automatically provisions and manages your resources on approach.
 Skip the YAML, and use standard language features like loops, functions, classes,
