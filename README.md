@@ -1,4 +1,38 @@
 
+## Classes
+- Client
+- Portfolio
+- Grid
+- Simulations
+- Reports
+
+## Client
+- account_number
+- client_name
+- total_position (sum of global_portfolio + local_portfolio)
+
+## Portfolio
+- portfolio_number
+- client_number
+- portfolio_type (local or global)
+- stocks
+
+## Grid
+- stock_name
+- last_price
+- last_change
+- last_six
+- last_twelve
+
+Simulations
+- something
+
+Reports
+- return_performance
+
+
+
+
 
 ## Table of Contents
 in progress
