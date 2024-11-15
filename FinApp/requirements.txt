@@ -3,8 +3,6 @@ Create the following classes
 Client
 Portfolio
 Stocks
-Grid
-Reports
 
 Class Client
 
@@ -43,7 +41,6 @@ Functions:
 - DeleteStock
 - ListStocks
 
-create class 'Grid' and 'Reports' empty
 
 in the Main class, create a menu print and receive user input
 
