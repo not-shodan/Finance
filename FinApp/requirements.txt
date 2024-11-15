@@ -26,10 +26,10 @@ Atributes:
 - PortfolioTotal: return the sum (quantity of stocks multiplied by last price) of all stocks in the portfolio
 
 Functions:
-- CreatePortfolio (unique Id/portfolio number)
-- InsertStock (on Current Portfolio)
-- RemoveStock (from Current Portfolio)
-- ListPortfolio (informe account number and return Portfolio details, each stock and PortfolioTotal)
+- CreatePortfolio (starts with 001, print list of users and receive user input (number) for the client)
+- InsertStock (display list of portfolios, user choose one, list stocks and user choose which one, and provide quantity)
+- RemoveStock (lists portfolios, use choose one, lists stocks and use choose which stock to remove)
+- ListPortfolio (display all portfolios)
 
 Class Stocks
 Atributes:
@@ -37,9 +37,9 @@ Atributes:
 - StockPrice = double
 
 Functions:
-- CreateStock
-- DeleteStock
-- ListStocks
+- CreateStock (user input with name of stock, check if exists, proceed user informs stockprice)
+- DeleteStock (lists stocks available, choose one, if stock is present in the portfolio remove)
+- ListStocks (display all stocks)
 
 
 in the Main class, create a menu print and receive user input
