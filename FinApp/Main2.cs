@@ -1,5 +1,3 @@
-Below is the implementation in C# for the required classes, attributes, methods, and menus:
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -348,13 +346,4 @@ class Program
         }
     }
 }
-
-Explanation:
-
-Each class contains the attributes and methods as specified.
-
-The main menu allows navigation between Clients, Portfolios, and Stocks menus.
-
-Each submenu implements the required functionality for creating, listing, and managing entities.
-
 
