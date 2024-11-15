@@ -6,70 +6,61 @@ namespace FinanceApp
 {
     public class Client
     {
-        public int AccountNumber { get; set; }			// account number deverá ser um número único (1 acc - n clientes)
-        public string ClientName { get; set; }			 
-        public double GlobalPortfolio { get; set; }		// retorna valor total portfolio
-        public double LocalPortfolio { get; set; }		// retorna valor total portfolio
+        public int AccountNumber { get; set; }				// account number deverá ser um número único (1 acc - n clientes)
+        public string ClientName { get; set; }				// 
+        public double GlobalPortfolio { get; set; }			// retorna valor total portfolio
+        public double LocalPortfolio { get; set; }			// retorna valor total portfolio
         public List<Portfolio> Portfolios { get; set; }		// contagem de portfolios em formato de lista
+		
+        public double TotalPosition { get { return GlobalPortfolio + LocalPortfolio; } } //retorna valor total investido
 
-        public double TotalPosition
-        {
-            get { return GlobalPortfolio + LocalPortfolio; } 	// retorna valor total investido
-        }
+        public int CountPortfolios() { return Portfolios.Count; }  //conta itens na lista
 
-        public int CountPortfolios()
-        {
-            return Portfolios.Count;  // conta itens na lista
-        }
-
-        public Client()
-        {
-            Portfolios = new List<Portfolio>(); // gera uma lista para um novo cliente 
-        }
+        public Client() { Portfolios = new List<Portfolio>(); } //gera uma lista para um novo cliente 
+        
     }
 
     public class Portfolio
     {
-        public int PortfolioNumber { get; set; } 			// identificador unico
-        public int ClientNumber { get; set; }				// identificador do cliente
+        public int PortfolioNumber { get; set; } 			//identificador unico
+        public int ClientNumber { get; set; }				//identificador do cliente
         public string PortfolioType { get; set; } 			// "Local" or "Global"
-        public Dictionary<int, Stock> Stocks { get; set; }		// inicia um dicionario para agregar parametros de 1 ação
-
-        public Portfolio()
-        {
-            Stocks = new Dictionary<int, Stock>();
-        }
+        public Dictionary<int, Stock> Stocks { get; set; }	//inicia um dicionario para agregar parametros de 1 ação
+        public Portfolio() { Stocks = new Dictionary<int, Stock>(); }	//cria novo dicionario
+   
     }
 
     public class Stock
     {
-        public string StockName { get; set; }		//cria os atributos básicos de uma ação  
+        public string StockName { get; set; }	//cria os atributos básicos de uma ação  
         public int Quantity { get; set; }		//
-        public double LastPrice { get; set; }		//
+        public double LastPrice { get; set; }	//
     }
 
 
 
-// Esta classe servirá para listar os atributos de 1 ação,
-// conceito: n ações para 1 portfolio
-// n portfolios para 1 cliente
-   
-    public class Grid
+	/** 
+	
+	Esta classe servirá para listar os atributos de 1 ação,
+	conceito: n ações para 1 portfolio
+	n portfolios para 1 cliente
+	
+	**/
+    
+	public class Grid
     {
-	public string StockName { get; set; }			// atributos básicos
-	public double LastPrice { get; set; }			//
-	public double LastChange { get; set; } 			// valor(es) em formato de porcentagem
-	public double LastSixMonths { get; set; } 		// 
-	public double LastTwelveMonths { get; set; } 	// 
+        public string StockName { get; set; }			// atributos básicos
+        public double LastPrice { get; set; }			//
+        public double LastChange { get; set; } 			// valor(es) em formato de porcentagem
+        public double LastSixMonths { get; set; } 		// 
+        public double LastTwelveMonths { get; set; } 	// 
     }
 
-    public class Simulations
+    
+	public class Simulations
     {
-	public double CalculateRisk(Portfolio portfolio)
-	{
-	    // fórmulas de risco
-	    return 0.0;
-	}
+        public double CalculateRisk(Portfolio portfolio)
+        { return 0.0; }
     }
 
 
@@ -77,10 +68,7 @@ namespace FinanceApp
     public class Reports
     {
         public double ReturnPerformance(Portfolio portfolio)
-        {
-            // buscar opcoes de relatorio
-            return 0.0; 
-        }
+        { return 0.0; }
     }
 
     class Program
