@@ -11,18 +11,18 @@ class Client
 
     public static void CreateClient()
     {
-        Console.Write("Enter Client Name: ");
+        Console.Write("\nEnter Client Name: ");
         string name = Console.ReadLine();
         int accountNumber = Clients.Count + 1;
         Clients.Add(new Client { AccountNumber = accountNumber, ClientName = name });
-        Console.WriteLine("Client created successfully!");
+        Console.WriteLine("\nClient created successfully!\n");
     }
 
     public static void ListClients()
     {
         if (Clients.Count == 0)
         {
-            Console.WriteLine("No clients found.");
+            Console.WriteLine("\nNo clients found.\n");
             return;
         }
 
@@ -34,18 +34,18 @@ class Client
 
     public static void DeleteClient()
     {
-        Console.WriteLine("Enter Account Number to delete: ");
+        Console.WriteLine("\nEnter Account Number to delete: \n");
         int accountNumber = int.Parse(Console.ReadLine());
 
         var client = Clients.FirstOrDefault(c => c.AccountNumber == accountNumber);
         if (client != null)
         {
             Clients.Remove(client);
-            Console.WriteLine("Client deleted successfully!");
+            Console.WriteLine("\nClient deleted successfully!\n");
         }
         else
         {
-            Console.WriteLine("Client not found.");
+            Console.WriteLine("\nClient not found.\n");
         }
     }
 
@@ -218,12 +218,12 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("Menu:");
+            Console.WriteLine("\nMenu:");
             Console.WriteLine("1. Clients");
             Console.WriteLine("2. Portfolios");
             Console.WriteLine("3. Stocks");
             Console.WriteLine("4. Exit");
-            Console.Write("Select an option: ");
+            Console.Write("\nSelect an option: \n");
 
             int mainMenuChoice = int.Parse(Console.ReadLine());
             switch (mainMenuChoice)
@@ -250,12 +250,12 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("Clients Menu:");
+            Console.WriteLine("\nClients Menu:\n");
             Console.WriteLine("1. Create Client");
             Console.WriteLine("2. List Clients");
             Console.WriteLine("3. Delete Client");
-            Console.WriteLine("4. Main Menu");
-            Console.Write("Select an option: ");
+            Console.WriteLine("4. Main Menu\n");
+            Console.Write("\nSelect an option: \n");
 
             int clientChoice = int.Parse(Console.ReadLine());
             switch (clientChoice)
@@ -282,13 +282,13 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("Portfolios Menu:");
+            Console.WriteLine("\nPortfolios Menu:\n");
             Console.WriteLine("1. Create Portfolio");
             Console.WriteLine("2. List Portfolios");
             Console.WriteLine("3. Insert Stock into Portfolio");
             Console.WriteLine("4. Remove Stock from Portfolio");
             Console.WriteLine("5. Main Menu");
-            Console.Write("Select an option: ");
+            Console.Write("\nSelect an option: \n");
 
             int portfolioChoice = int.Parse(Console.ReadLine());
             switch (portfolioChoice)
@@ -318,12 +318,12 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("Stocks Menu:");
+            Console.WriteLine("\nStocks Menu:\n");
             Console.WriteLine("1. List Stocks");
             Console.WriteLine("2. Create Stock");
             Console.WriteLine("3. Delete Stock");
             Console.WriteLine("4. Main Menu");
-            Console.Write("Select an option: ");
+            Console.Write("\nSelect an option: \n");
 
             int stockChoice = int.Parse(Console.ReadLine());
             switch (stockChoice)
