@@ -145,7 +145,7 @@ namespace FinanceApp
         static void Main(string[] args)
         {
             // Initialize client
-            Client jack = new Client
+            Client client = new Client
             {
                 AccountNumber = 1,
                 ClientName = "Jack",
@@ -157,7 +157,7 @@ namespace FinanceApp
             Portfolio localPortfolio = new Portfolio
             {
                 PortfolioNumber = 101,
-                ClientNumber = jack.AccountNumber,
+                ClientNumber = client.AccountNumber,
                 PortfolioType = "Local"
             };
 
@@ -172,12 +172,12 @@ namespace FinanceApp
             localPortfolio.Stocks.Add(1, tslaStock);
 
             // Add portfolio to client's portfolios
-            jack.Portfolios.Add(localPortfolio);
+            client.Portfolios.Add(localPortfolio);
 
             // Print client details
-            Console.WriteLine($"Client Name: {jack.ClientName}");
-            Console.WriteLine($"Total Position: USD {jack.TotalPosition:N2}");
-            Console.WriteLine($"Number of Portfolios: {jack.CountPortfolios()}");
+            Console.WriteLine($"Client Name: {client.ClientName}");
+            Console.WriteLine($"Total Position: USD {client.TotalPosition:N2}");
+            Console.WriteLine($"Number of Portfolios: {client.CountPortfolios()}");
 
             // Calculate and print TSLA stock total
             double totalStockValue = tslaStock.Quantity * tslaStock.LastPrice;
