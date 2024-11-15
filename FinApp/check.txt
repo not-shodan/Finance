@@ -1,53 +1,60 @@
 using System;
 using System.Collections.Generic;
 
-class Stock
+class Client
 {
-    public int StockNumber { get; set; }
-    public string StockName { get; set; }
-    public double StockPrice { get; set; }
+    public int AccountNumber { get; set; }
+    public string ClientName { get; set; }
 
-    public static List<Stock> Stocks = new List<Stock>();
+	public static List<Client> Clients = new List<Client>();
 
-    public static void CreateStock()
-    {
-        int stockNumber = Stocks.Count + 1;
+	
+	public static void CreateClient()
+	{
+		int accountNumber = Clients.Count + 1;
+		Console.WriteLine("\nInsert name: ");
+		string name = Console.ReadLine();
+		Clients.Add(new Client { AccountNumber = accountNumber, ClientName = name });
+	}
+ }
 
-        Console.WriteLine("\nEnter Stock Name: ");
-        string name = Console.ReadLine();
+class Stock()
+{
+	public int StockNumber { get; set; }
+	public string StockName { get; set; }
+	public double StockPrice { get; set; }
+	
+	public static List<Stock> Stocks = new List<Stock>();
+	
+	public static void CreateStock()
+	{
+		int stockNumber = 0;
+		string name = "";
+		double price = 0.0;
+		Stocks.Add(new Stock { StockNumber = stockNumber, StockName = name, StockPrice = price });
+		
+		1, TSLA, 20.00
+		2, NVDA, 14.00
+		3, AMZN, 7.00
+		4, AAPL, 12.00
+		5, MSFT, 24.00
+		6, GOOGL, 30.00
 
-        Console.WriteLine("Enter Stock Price: ");
-        double price;
-        while (!double.TryParse(Console.ReadLine(), out price) || price < 0)
-        {
-            Console.WriteLine("Invalid input. Please enter a valid positive number for Stock Price: ");
-        }
-
-        Stocks.Add(new Stock { StockNumber = stockNumber, StockName = name, StockPrice = price });
-        Console.WriteLine($"Stock {name} successfully added!");
-    }
-
-    public static void DisplayStocks()
-    {
-        Console.WriteLine("\nList of Stocks:");
-        foreach (var stock in Stocks)
-        {
-            Console.WriteLine($"Stock Number: {stock.StockNumber}, Name: {stock.StockName}, Price: {stock.StockPrice:C}");
-        }
-    }
+	}
 }
+
 
 class Program
 {
     static void Main()
     {
-        Console.WriteLine("Insert 5 stocks:");
-
-        for (int i = 0; i < 5; i++)
-        {
-            Stock.CreateStock();
-        }
-
-        Stock.DisplayStocks();
-    }
+		Client.CreateClient();
+		foreach (var client in Client.Clients)
+		{
+			Console.WriteLine($"Account number: {client.AccountNumber}");
+			Console.WriteLine($"Name: {client.ClientName}");
+		}
+		
+		Stock.CreateStock();
+	}
 }
