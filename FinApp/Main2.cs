@@ -26,7 +26,7 @@ class Client
             return;
         }
 
-        foreach (var client in Clients)
+        foreach (var client in Clients) //lista de clientes, 
         {
             Console.WriteLine($"Account Number: {client.AccountNumber}, Name: {client.ClientName}");
         }
@@ -155,7 +155,10 @@ class Portfolio
     {
         foreach (var portfolio in Portfolios)
         {
-            Console.WriteLine($"Portfolio Number: {portfolio.PortfolioNumber}, Account Number: {portfolio.AccountNumber}, Type: {portfolio.PortfolioType}, Total Value: {portfolio.PortfolioTotal}");
+            Console.WriteLine($"Portfolio Number: {portfolio.PortfolioNumber}");
+			Console.WriteLine($"Account Number: {portfolio.AccountNumber}");
+			Console.WriteLine($"Type: {portfolio.PortfolioType}");
+			Console.WriteLine($"Total Value: {portfolio.PortfolioTotal}");
         }
     }
 }
