@@ -1,127 +1,360 @@
+Below is the implementation in C# for the required classes, attributes, methods, and menus:
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace FinanceApp
+class Client
 {
-    public class Client
+    public int AccountNumber { get; set; }
+    public string ClientName { get; set; }
+
+    public static List<Client> Clients = new List<Client>();
+
+    public static void CreateClient()
     {
-        public int AccountNumber { get; set; }
-        public string ClientName { get; set; }
-        public double GlobalPortfolio { get; set; }
-        public double LocalPortfolio { get; set; }
-        public List<Portfolio> Portfolios { get; set; }
+        Console.Write("Enter Client Name: ");
+        string name = Console.ReadLine();
+        int accountNumber = Clients.Count + 1;
+        Clients.Add(new Client { AccountNumber = accountNumber, ClientName = name });
+        Console.WriteLine("Client created successfully!");
+    }
 
-        public double TotalPosition
+    public static void ListClients()
+    {
+        if (Clients.Count == 0)
         {
-            get { return GlobalPortfolio + LocalPortfolio; }
+            Console.WriteLine("No clients found.");
+            return;
         }
 
-        public int CountPortfolios()
+        foreach (var client in Clients)
         {
-            return Portfolios.Count;
-        }
-
-        public Client()
-        {
-            Portfolios = new List<Portfolio>();
+            Console.WriteLine($"Account Number: {client.AccountNumber}, Name: {client.ClientName}");
         }
     }
 
-    public class Portfolio
+    public static void DeleteClient()
     {
-        public int PortfolioNumber { get; set; }
-        public int ClientNumber { get; set; }
-        public string PortfolioType { get; set; } // "Local" or "Global"
-        public List<Stock> Stocks { get; set; }
+        Console.WriteLine("Enter Account Number to delete: ");
+        int accountNumber = int.Parse(Console.ReadLine());
 
-        public Portfolio()
+        var client = Clients.FirstOrDefault(c => c.AccountNumber == accountNumber);
+        if (client != null)
         {
-            Stocks = new List<Stock>();
+            Clients.Remove(client);
+            Console.WriteLine("Client deleted successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Client not found.");
         }
     }
 
-    public class Stock
+    public static int CountPortfolios(int accountNumber)
     {
-        public string StockName { get; set; }
-        public int Quantity { get; set; }
-        public double LastPrice { get; set; }
+        return Portfolio.Portfolios.Count(p => p.AccountNumber == accountNumber);
+    }
+}
 
-        public double TotalValue
+class Portfolio
+{
+    public int PortfolioNumber { get; set; }
+    public int AccountNumber { get; set; }
+    public string PortfolioType { get; set; }
+    public List<Stock> Stocks { get; set; } = new List<Stock>();
+
+    public static List<Portfolio> Portfolios = new List<Portfolio>();
+
+    public double PortfolioTotal
+    {
+        get { return Stocks.Sum(stock => stock.Quantity * stock.StockPrice); }
+    }
+
+    public static void CreatePortfolio()
+    {
+        Console.WriteLine("Select a Client by Account Number:");
+        Client.ListClients();
+        int accountNumber = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter Portfolio Type (Global/Local): ");
+        string portfolioType = Console.ReadLine();
+
+        int portfolioNumber = Portfolios.Count + 1;
+        Portfolios.Add(new Portfolio { PortfolioNumber = portfolioNumber, AccountNumber = accountNumber, PortfolioType = portfolioType });
+
+        Console.WriteLine("Portfolio created successfully!");
+    }
+
+    public static void InsertStock()
+    {
+        Console.WriteLine("Select a Portfolio by Portfolio Number:");
+        ListPortfolios();
+        int portfolioNumber = int.Parse(Console.ReadLine());
+
+        Portfolio portfolio = Portfolios.FirstOrDefault(p => p.PortfolioNumber == portfolioNumber);
+        if (portfolio != null)
         {
-            get { return Quantity * LastPrice; }
+            Stock.ListStocks();
+            Console.Write("Enter Stock Name: ");
+            string stockName = Console.ReadLine();
+
+            Console.Write("Enter Quantity: ");
+            int quantity = int.Parse(Console.ReadLine());
+
+            Stock stock = Stock.Stocks.FirstOrDefault(s => s.StockName == stockName);
+            if (stock != null)
+            {
+                stock.Quantity = quantity;
+                portfolio.Stocks.Add(stock);
+                Console.WriteLine("Stock added to portfolio.");
+            }
+            else
+            {
+                Console.WriteLine("Stock not found.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Portfolio not found.");
         }
     }
 
-    class Program
+    public static void RemoveStock()
     {
-        static void Main(string[] args)
+        Console.WriteLine("Select a Portfolio by Portfolio Number:");
+        ListPortfolios();
+        int portfolioNumber = int.Parse(Console.ReadLine());
+
+        Portfolio portfolio = Portfolios.FirstOrDefault(p => p.PortfolioNumber == portfolioNumber);
+        if (portfolio != null)
         {
-            // Initialize client
-            Console.Write("Enter client name: ");
-            string clientName = Console.ReadLine();
-
-            Client client = new Client
+            Console.WriteLine("Select a Stock to Remove:");
+            foreach (var stock in portfolio.Stocks)
             {
-                AccountNumber = 1,
-                ClientName = clientName,
-                LocalPortfolio = 150000.00, // Example local portfolio value
-                GlobalPortfolio = 0.0
-            };
-
-            // Create a local portfolio
-            Portfolio localPortfolio = new Portfolio
-            {
-                PortfolioNumber = 101,
-                ClientNumber = client.AccountNumber,
-                PortfolioType = "Local"
-            };
-
-            // Input stocks in a loop
-            Console.WriteLine("Enter stock details. Type 'end' to finish.");
-
-            while (true)
-            {
-                Console.Write("Enter stock name (or 'end' to finish): ");
-                string stockName = Console.ReadLine();
-
-                if (stockName.ToLower() == "end") break;
-
-                Console.Write("Enter quantity: ");
-                int quantity = int.Parse(Console.ReadLine());
-
-                Console.Write("Enter last price: ");
-                double lastPrice = double.Parse(Console.ReadLine());
-
-                // Create and add stock to portfolio
-                Stock stock = new Stock
-                {
-                    StockName = stockName,
-                    Quantity = quantity,
-                    LastPrice = lastPrice
-                };
-
-                localPortfolio.Stocks.Add(stock);
+                Console.WriteLine($"Stock Name: {stock.StockName}");
             }
 
-            // Add portfolio to client's list of portfolios
-            client.Portfolios.Add(localPortfolio);
-
-            // Print client and portfolio details
-            Console.WriteLine("\nClient Information:");
-            Console.WriteLine($"Name: {client.ClientName}");
-            Console.WriteLine($"Total Position: USD {client.TotalPosition:N2}");
-            Console.WriteLine($"Number of Portfolios: {client.CountPortfolios()}");
-
-            Console.WriteLine("\nPortfolio Details:");
-            foreach (var portfolio in client.Portfolios)
+            string stockName = Console.ReadLine();
+            var stockToRemove = portfolio.Stocks.FirstOrDefault(s => s.StockName == stockName);
+            if (stockToRemove != null)
             {
-                Console.WriteLine($"\nPortfolio Type: {portfolio.PortfolioType}");
-                Console.WriteLine("Stocks:");
-                foreach (var stock in portfolio.Stocks)
-                {
-                    Console.WriteLine($"- {stock.StockName}: Quantity = {stock.Quantity}, Last Price = USD {stock.LastPrice:N2}, Total Value = USD {stock.TotalValue:N2}");
-                }
+                portfolio.Stocks.Remove(stockToRemove);
+                Console.WriteLine("Stock removed.");
+            }
+            else
+            {
+                Console.WriteLine("Stock not found.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Portfolio not found.");
+        }
+    }
+
+    public static void ListPortfolios()
+    {
+        foreach (var portfolio in Portfolios)
+        {
+            Console.WriteLine($"Portfolio Number: {portfolio.PortfolioNumber}, Account Number: {portfolio.AccountNumber}, Type: {portfolio.PortfolioType}, Total Value: {portfolio.PortfolioTotal}");
+        }
+    }
+}
+
+class Stock
+{
+    public string StockName { get; set; }
+    public double StockPrice { get; set; }
+    public int Quantity { get; set; }
+
+    public static List<Stock> Stocks = new List<Stock>();
+
+    public static void CreateStock()
+    {
+        Console.Write("Enter Stock Name: ");
+        string name = Console.ReadLine();
+
+        if (Stocks.Any(s => s.StockName == name))
+        {
+            Console.WriteLine("Stock already exists.");
+            return;
+        }
+
+        Console.Write("Enter Stock Price: ");
+        double price = double.Parse(Console.ReadLine());
+
+        Stocks.Add(new Stock { StockName = name, StockPrice = price });
+        Console.WriteLine("Stock created successfully!");
+    }
+
+    public static void DeleteStock()
+    {
+        Console.WriteLine("Enter Stock Name to Delete:");
+        string name = Console.ReadLine();
+
+        var stock = Stocks.FirstOrDefault(s => s.StockName == name);
+        if (stock != null)
+        {
+            Stocks.Remove(stock);
+            Console.WriteLine("Stock deleted successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Stock not found.");
+        }
+    }
+
+    public static void ListStocks()
+    {
+        foreach (var stock in Stocks)
+        {
+            Console.WriteLine($"Stock Name: {stock.StockName}, Stock Price: {stock.StockPrice}");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1. Clients");
+            Console.WriteLine("2. Portfolios");
+            Console.WriteLine("3. Stocks");
+            Console.WriteLine("4. Exit");
+            Console.Write("Select an option: ");
+
+            int mainMenuChoice = int.Parse(Console.ReadLine());
+            switch (mainMenuChoice)
+            {
+                case 1:
+                    ClientMenu();
+                    break;
+                case 2:
+                    PortfolioMenu();
+                    break;
+                case 3:
+                    StockMenu();
+                    break;
+                case 4:
+                    return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    break;
+            }
+        }
+    }
+
+    static void ClientMenu()
+    {
+        while (true)
+        {
+            Console.WriteLine("Clients Menu:");
+            Console.WriteLine("1. Create Client");
+            Console.WriteLine("2. List Clients");
+            Console.WriteLine("3. Delete Client");
+            Console.WriteLine("4. Main Menu");
+            Console.Write("Select an option: ");
+
+            int clientChoice = int.Parse(Console.ReadLine());
+            switch (clientChoice)
+            {
+                case 1:
+                    Client.CreateClient();
+                    break;
+                case 2:
+                    Client.ListClients();
+                    break;
+                case 3:
+                    Client.DeleteClient();
+                    break;
+                case 4:
+                    return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    break;
+            }
+        }
+    }
+
+    static void PortfolioMenu()
+    {
+        while (true)
+        {
+            Console.WriteLine("Portfolios Menu:");
+            Console.WriteLine("1. Create Portfolio");
+            Console.WriteLine("2. List Portfolios");
+            Console.WriteLine("3. Insert Stock into Portfolio");
+            Console.WriteLine("4. Remove Stock from Portfolio");
+            Console.WriteLine("5. Main Menu");
+            Console.Write("Select an option: ");
+
+            int portfolioChoice = int.Parse(Console.ReadLine());
+            switch (portfolioChoice)
+            {
+                case 1:
+                    Portfolio.CreatePortfolio();
+                    break;
+                case 2:
+                    Portfolio.ListPortfolios();
+                    break;
+                case 3:
+                    Portfolio.InsertStock();
+                    break;
+                case 4:
+                    Portfolio.RemoveStock();
+                    break;
+                case 5:
+                    return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    break;
+            }
+        }
+    }
+
+    static void StockMenu()
+    {
+        while (true)
+        {
+            Console.WriteLine("Stocks Menu:");
+            Console.WriteLine("1. List Stocks");
+            Console.WriteLine("2. Create Stock");
+            Console.WriteLine("3. Delete Stock");
+            Console.WriteLine("4. Main Menu");
+            Console.Write("Select an option: ");
+
+            int stockChoice = int.Parse(Console.ReadLine());
+            switch (stockChoice)
+            {
+                case 1:
+                    Stock.ListStocks();
+                    break;
+                case 2:
+                    Stock.CreateStock();
+                    break;
+                case 3:
+                    Stock.DeleteStock();
+                    break;
+                case 4:
+                    return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    break;
             }
         }
     }
 }
+
+Explanation:
+
+Each class contains the attributes and methods as specified.
+
+The main menu allows navigation between Clients, Portfolios, and Stocks menus.
+
+Each submenu implements the required functionality for creating, listing, and managing entities.
+
+
