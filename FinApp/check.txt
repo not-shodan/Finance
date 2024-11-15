@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+class Client
+{
+    public int AccountNumber { get; set; }
+    public string ClientName { get; set; }
+
+	public static List<Client> Clients = new List<Client>();
+
+	
+	public static void CreateClient()
+	{
+		int accountNumber = Clients.Count + 1;
+		Console.WriteLine("\nInsert name: ");
+		string name = Console.ReadLine();
+		Clients.Add(new Client { AccountNumber = accountNumber, ClientName = name });
+	}
+	
+ }
+
+
+class Program
+{
+    static void Main()
+    {
+        //Console.WriteLine("Nothing to see here");
+    	Client.CreateClient();
+		//Console.WriteLine($"Account Number: {Clients.client.AccountNumber}, Name: {Clients.client.ClientName}");
+		Console.WriteLine(Client.Clients.AccountNumber);
+	}
+
+}
