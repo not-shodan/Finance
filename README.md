@@ -10,6 +10,8 @@
 - Calculate your portfolio’s Value at Risk (VaR) using the market standard historical VaR method
 
 
+Identify Skews
+
 
 PORTFOLIO VALUE-AT-RISK
 
