@@ -1,5 +1,3 @@
-Here's a complete example demonstrating covariance, contravariance, and invariance in C#:
-
 using System;
 using System.Collections.Generic;
 
@@ -53,38 +51,23 @@ namespace VarianceDemo
     }
 }
 
-Explanation
+
+/**
 
 1. Covariance:
-
 The IEnumerable<object> is assigned a List<string> because IEnumerable<T> is covariant.
-
 This allows us to treat List<string> as IEnumerable<object>.
 
-
-
 2. Contravariance:
-
 An Action<object> can accept an Action<string> because Action<T> is contravariant.
-
 This is useful when the method argument types differ.
 
-
-
 3. Invariance:
-
 List<string> cannot be assigned to List<object> because List<T> is invariant.
-
 We explicitly demonstrate this using a method.
 
-
-
 4. Delegates:
-
 Covariance and contravariance are tested using Func<T> and Action<T>.
-
-
-
 
 Output
 
@@ -106,5 +89,4 @@ Generated string
 === Contravariance with Delegates ===
 Consuming object: Delegated string.
 
-This example covers all three aspects of variance, showcasing how they can be applied in real-world scenarios.
-
+**/
