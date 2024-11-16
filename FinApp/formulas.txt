@@ -40,11 +40,31 @@ Volatility Index (VIX)
 
 
 
+Covariance
+
+Calculate the average return for each stock:
+
+For ABC, it would be (1.1 + 1.7 + 2.1 + 1.4 + 0.2) / 5 = 1.30.
+For XYZ, it would be (3 + 4.2 + 4.9 + 4.1 + 2.5) / 5 = 3.74.
 
 
 
 
+Using our example of ABC and XYZ above, the covariance is calculated as:
 
+= [(1.1 - 1.30) x (3 - 3.74)] + [(1.7 - 1.30) x (4.2 - 3.74)] + [(2.1 - 1.30) x (4.9 - 3.74)] + …
+= [0.148] + [0.184] + [0.928] + [0.036] + [1.364]
+= 2.66 / (5 - 1)
+= 0.665
+
+we divide by the sample size (five) minus one
+
+
+Uses of Covariance
+
+σ = standard deviation
+
+Correlation (ρ) = cov(X,Y)/(σX σY)
 
 
 
