@@ -1,0 +1,52 @@
+
+Dollar Value of a basis point = DV01
+is a measure of how the price of a bond changes in response to a change in yield. 
+
+It is also known as the present value of one basis point = PV01
+
+
+Value at Risk = vm (vi / v(i - 1))
+M = the number of days from which historical data is taken
+vi = the number of variables on the day i. 
+
+
+Confidence	# of σ	Calculation	Equals
+95% (high)	- 1.65 x σ	- 1.65 x (2.64%) =	-4.36%
+99% (really high)	- 2.33 x σ	- 2.33 x (2.64%) =	-6.15%
+
+
+
+Volatility = σ√T
+where:
+
+σ = standard deviation of returns
+T = number of periods in the time horizon
+
+
+
+Find the mean of the data set.
+Calculate the difference between each data value and the mean.
+Square the deviations. This will eliminate negative values.
+Add the squared deviations together.
+Divide the sum of the squared deviations (82.5) by the number of data values.
+
+Take the square root of the variance to get the standard deviation
+
+Implied Volatility
+Historical Volatility
+Beta
+Volatility Index (VIX)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
