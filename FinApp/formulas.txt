@@ -67,6 +67,12 @@ Uses of Covariance
 Correlation (ρ) = cov(X,Y)/(σX σY)
 
 
+Stochastic Modeling
+This type of modeling forecasts the probability of various outcomes under different conditions, using random variable
+The opposite of stochastic modeling is deterministic modeling, which gives you the same exact results every time for a particular set of inputs.
+Monte Carlo simulation is one example of a stochastic model; it can simulate how a portfolio may perform based on the probability distributions of individual stock returns.
+
+Stochastic Modeling: Constant vs. Changeable
 
 
-
+https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/resources/
