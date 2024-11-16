@@ -1,29 +1,17 @@
-Parametric Value at Risk (VaR) is a commonly used risk measurement technique based on the assumption that portfolio returns are normally distributed. Here's an example implementation in C# to calculate the parametric VaR:
-
-Explanation
+/**
 
 1. Inputs:
 
-Portfolio value ().
-
-Expected return ().
-
-Portfolio standard deviation ().
-
-Confidence level ().
-
-
+Portfolio value ()
+Expected return ()
+Portfolio standard deviation ()
+Confidence level ()
 
 2. Calculation:
 
-
-
 \text{VaR} = V \cdot z \cdot \sigma
 
-
----
-
-Example C# Code
+**/
 
 using System;
 
@@ -71,26 +59,15 @@ class ParametricVaR
 }
 
 
----
-
-Features
+/**
 
 1. Custom Confidence Levels: Use MathNet.Numerics for dynamic z-score calculations based on the standard normal distribution:
 
 using MathNet.Numerics.Distributions;
-
 double zScore = Normal.InvCDF(0, 1, confidenceLevel);
-
 
 2. Scalability: Extend the program to handle multi-asset portfolios by integrating covariance matrices for portfolio standard deviation.
 
-
 3. Error Handling: Add checks for input ranges, e.g., ensuring .
 
-
-
-
----
-
-Let me know if you need assistance implementing advanced features like multi-asset portfolios or backtesting VaR!
-
+**/
