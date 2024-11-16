@@ -1,92 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace VarianceDemo
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            // Covariance example
-            Console.WriteLine("=== Covariance ===");
-            IEnumerable<object> objects = new List<string> { "Hello", "World" }; // Covariance works
-            foreach (var obj in objects)
-            {
-                Console.WriteLine(obj); // Outputs: Hello, World
-            }
+        double[] numbers = {10, 20, 30, 40, 50};
+        double mean = numbers.Average();
 
-            // Contravariance example
-            Console.WriteLine("\n=== Contravariance ===");
-            Action<object> printObject = (obj) => Console.WriteLine($"Object: {obj}");
-            Action<string> printString = printObject; // Contravariance works
-            printString("This is a string."); // Outputs: Object: This is a string.
+        double variance = numbers.Sum(x => Math.Pow(x - mean, 2)) / (numbers.Length - 1);
 
-            // Invariance example
-            Console.WriteLine("\n=== Invariance ===");
-            List<string> stringList = new List<string> { "A", "B", "C" };
-            // List<object> objectList = stringList; // Error: Invariant type List<T>
-            ProcessList(stringList); // This works
+        Console.WriteLine($"Variance: {variance}");
 
-            // Covariance with delegates
-            Console.WriteLine("\n=== Covariance with Delegates ===");
-            Func<string> stringProducer = () => "Generated string";
-            Func<object> objectProducer = stringProducer; // Covariance works
-            Console.WriteLine(objectProducer()); // Outputs: Generated string
+        double standardDeviation = Math.Sqrt(variance);
 
-            // Contravariance with delegates
-            Console.WriteLine("\n=== Contravariance with Delegates ===");
-            Action<object> objectConsumer = (obj) => Console.WriteLine($"Consuming object: {obj}");
-            Action<string> stringConsumer = objectConsumer; // Contravariance works
-            stringConsumer("Delegated string."); // Outputs: Consuming object: Delegated string.
-        }
-
-        // A method to process a list (to demonstrate invariance explicitly)
-        static void ProcessList(List<string> list)
-        {
-            foreach (var item in list)
-            {
-                Console.WriteLine($"Processing: {item}");
-            }
-        }
+        Console.WriteLine($"Standard Dev: {stadandarDeviation}");
     }
 }
-
-
-/**
-
-1. Covariance:
-The IEnumerable<object> is assigned a List<string> because IEnumerable<T> is covariant.
-This allows us to treat List<string> as IEnumerable<object>.
-
-2. Contravariance:
-An Action<object> can accept an Action<string> because Action<T> is contravariant.
-This is useful when the method argument types differ.
-
-3. Invariance:
-List<string> cannot be assigned to List<object> because List<T> is invariant.
-We explicitly demonstrate this using a method.
-
-4. Delegates:
-Covariance and contravariance are tested using Func<T> and Action<T>.
-
-Output
-
-=== Covariance ===
-Hello
-World
-
-=== Contravariance ===
-Object: This is a string.
-
-=== Invariance ===
-Processing: A
-Processing: B
-Processing: C
-
-=== Covariance with Delegates ===
-Generated string
-
-=== Contravariance with Delegates ===
-Consuming object: Delegated string.
-
-**/
