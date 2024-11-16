@@ -1,5 +1,3 @@
-Below is an example implementation of a Monte Carlo-based Value at Risk (VaR) calculation in C#. This script simulates potential portfolio returns over a time horizon, calculates potential losses, and determines the VaR at a specified confidence level.
-
 using System;
 using System.Linq;
 
@@ -45,42 +43,28 @@ class MonteCarloVaR
     }
 }
 
-Explanation:
+/**
 
 1. Inputs:
 
 portfolioValue: The initial value of the portfolio.
-
 meanReturn and volatility: The portfolio's expected daily return and standard deviation.
-
 timeHorizon: The number of days over which the simulation runs.
-
 numSimulations: The number of Monte Carlo simulations.
-
 confidenceLevel: The desired confidence level for the VaR calculation.
-
-
 
 2. Simulation:
 
 Generates random daily returns using a normal distribution.
-
 Computes the portfolio value at the end of the time horizon for each simulation.
-
-
 
 3. Sorting Losses:
 
 Losses are sorted to find the percentile corresponding to the confidence level.
 
-
-
 4. Output:
 
 The VaR is the portfolio loss at the (1 - confidenceLevel) percentile.
-
-
-
 
 Dependencies:
 
@@ -88,3 +72,4 @@ This code uses the MathNet.Numerics library for generating random samples from a
 
 Install-Package MathNet.Numerics
 
+**/
