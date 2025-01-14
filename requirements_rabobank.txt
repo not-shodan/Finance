@@ -1,0 +1,43 @@
+
+Trader Pleno
+
+Gestão risco de portfólio, com ênfase em FX, Rates e Commodities;
+Realizar a precificação de derivativos para as equipes de Sales, fornecendo suporte na definição de preços competitivos;
+Monitorar e analisar tendências de mercado para identificar oportunidades;
+Desenvolver e implementar estratégias de trading para otimizar o portfólio;
+Manter-se atualizado com as notícias e eventos econômicos que possam impactar os mercados financeiros.
+
+Principais requisitos:
+
+Sólidos conhecimentos de Matemática Financeira e Estatística
+Conhecimento de Produtos de Tesouraria: Spot, NDF, Swaps, Futuros e Opções
+Conhecimentos sobre o mercado brasileiro
+Programação: VBA obrigatório, Python desejável
+Inglês avançado é mandatório.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
